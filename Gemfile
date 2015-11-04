@@ -5,6 +5,7 @@ gem 'activesupport', '3.1.0', :platform => [:ruby_18]
 gem 'nokogiri', '1.5.10', :platform => [:ruby_18]
 gem 'retriable', '1.4.1', :platform => [:ruby_18]
 gem 'highline', '1.6.21', :platform => [:ruby_18]
+gem 'faraday'. '0.9.2', :platform => [:ruby_18]
 
 group :development, :test do
   gem 'rake',                    :require => false
