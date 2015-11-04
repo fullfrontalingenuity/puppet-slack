@@ -1,17 +1,17 @@
 {
-  "name": "fsalum-slack",
+  "name": "fullfromtalingenuity-slack",
   "version": "0.0.2",
-  "source": "git://github.com/fsalum/puppet-slack.git",
-  "author": "Felipe Salum",
+  "source": "git://github.com/fullfrontalingenuity/puppet-slack.git",
+  "author": "Paul Talbot",
   "license": "Apache 2.0",
   "summary": "Slack.com integration for Puppet report processor",
-  "project_page": "https://github.com/fsalum/puppet-slack",
-  "issues_url": "https://github.com/fsalum/puppet-slack/issues",
+  "project_page": "https://github.com/fullfrontalingenuity/puppet-slack",
+  "issues_url": "https://github.com/fullfrontalingenuity/puppet-slack/issues",
   "tags": ["slack", "chat", "messaging", "communication"],
   "requirements": [],
   "operatingsystem_support": [
     { "operatingsystem":"Centos",
-      "operatingsystemrelease":[ "5.0", "6.0" ] },
+      "operatingsystemrelease":[ "5.0", "6.0", "7.0" ] },
     { "operatingsystem": "Ubuntu",
       "operatingsystemrelease": [ "12.04", "14.04" ] }
   ],
