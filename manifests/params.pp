@@ -9,12 +9,15 @@ class slack::params {
   $is_puppetmaster      = undef
 
   if $::pe_server_version {
+    notice('pe_server_version was found')
     $gem_provider = 'puppetserver_gem'
   }
   elsif str2bool($::is_pe) {
+    notice('is_pe was true')
     $gem_provider = 'pe_puppetserver_gem'
   }
   else {
+    notice('last resort')
     $gem_provider = 'gem'
   }
 }
