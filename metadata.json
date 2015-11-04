@@ -1,6 +1,6 @@
 {
-  "name": "fullfromtalingenuity-slack",
-  "version": "0.0.2",
+  "name": "fullfrontalingenuity-slack",
+  "version": "0.0.3",
   "source": "git://github.com/fullfrontalingenuity/puppet-slack.git",
   "author": "Paul Talbot",
   "license": "Apache 2.0",
