@@ -15,6 +15,6 @@ class slack::params {
     $gem_provider = 'pe_puppetserver_gem'
   }
   else {
-    $gem_provider = 'pe_gem'
+    $gem_provider = 'gem'
   }
 }
