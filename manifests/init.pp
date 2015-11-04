@@ -7,7 +7,10 @@ class slack (
   $slack_puppet_reports = $slack::params::slack_puppet_reports,
   $slack_puppet_dir     = $slack::params::slack_puppet_dir,
   $is_puppetmaster      = $slack::params::is_puppetmaster,
+  $gem_provider         = $slack::params::gem_provider,
 ) inherits slack::params {
+
+  notice("gem_provider: $gem_provider")
 
   anchor {'slack::begin':}
 
