@@ -1,13 +1,13 @@
 # Report processor integration with Slack.com
 class slack (
   $slack_webhook        = undef,
-  $slack_iconurl        = 'http://puppetlabs.com/wp-content/uploads/2010/12/PL_logo_vertical_RGB_lg.png',
-  $slack_channel        = '#puppet',
-  $slack_botname        = 'puppet',
+  $slack_iconurl        = undef,
+  $slack_channel        = undef,
+  $slack_botname        = undef,
   $slack_puppet_reports = undef,
-  $slack_puppet_dir     = '/etc/puppetlabs/puppet',
-  $is_puppetmaster      = true,
-) {
+  $slack_puppet_dir     = undef,
+  $is_puppetmaster      = undef,
+) inherits slack::params {
 
   anchor {'slack::begin':}
 
@@ -18,14 +18,20 @@ class slack (
       require  => Anchor['slack::begin'],
       before   => File["${slack_puppet_dir}/slack.yaml"],
     }
-  }else {
-    include check_run
+  } else {
+    #include check_run
     case $::osfamily {
       'redhat','debian': {
-        check_run::task { 'task_faraday_gem_install':
-          exec_command => '/usr/bin/puppetserver gem install faraday',
-          require      => Anchor['slack::begin'],
-          before       => File["${slack_puppet_dir}/slack.yaml"],
+        #check_run::task { 'task_faraday_gem_install':
+        #  exec_command => '/usr/bin/puppetserver gem install faraday',
+        #  require      => Anchor['slack::begin'],
+        #  before       => File["${slack_puppet_dir}/slack.yaml"],
+        #}
+        package {'faraday':
+          ensure   => present,
+          require  => Anchor['slack::begin'],
+          before   => File["${slack_puppet_dir}/slack.yaml"],
+          provider => $gem_provider,
         }
       }
       default: {

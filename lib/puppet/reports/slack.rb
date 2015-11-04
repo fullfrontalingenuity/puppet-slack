@@ -1,4 +1,4 @@
-require 'puppet'
+#require 'puppet'   # comment when using PE
 require 'yaml'
 require 'json'
 require 'faraday'
