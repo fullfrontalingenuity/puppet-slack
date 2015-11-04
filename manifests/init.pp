@@ -5,7 +5,7 @@ class slack (
   $slack_channel        = '#puppet',
   $slack_botname        = 'puppet',
   $slack_puppet_reports = undef,
-  $slack_puppet_dir     = '/etc/puppet',
+  $slack_puppet_dir     = '/etc/puppetlabs/puppet',
   $is_puppetmaster      = true,
 ) {
 
