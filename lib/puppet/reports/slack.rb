@@ -1,4 +1,4 @@
-#require 'puppet'   # comment when using PE
+require 'puppet'   # comment when using PE?
 require 'yaml'
 require 'json'
 require 'faraday'
@@ -16,6 +16,7 @@ Puppet::Reports.register_report(:slack) do
   SLACK_CHANNEL = @config[:slack_channel]
   SLACK_BOTNAME = @config[:slack_botname]
   SLACK_ICONURL = @config[:slack_iconurl]
+  puts $SLACK_WEBHOOK
 
   def process
     if self.status == "failed" or self.status == "changed"
