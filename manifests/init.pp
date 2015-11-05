@@ -10,7 +10,11 @@ class slack (
   $gem_provider         = $slack::params::gem_provider,
 ) inherits slack::params {
 
-  notice("gem_provider: $gem_provider")
+  debug("slack_webhook: $slack_webhook")
+  debug("is_puppetmaster: $is_puppetmaster")
+  debug("slack_channel: $slack_channel")
+  debug("slack_botname: $slack_botname")
+  debug("gem_provider: $gem_provider")
 
   anchor {'slack::begin':}
 
@@ -20,26 +24,6 @@ class slack (
       provider => gem,
       require  => Anchor['slack::begin'],
       before   => File["${slack_puppet_dir}/slack.yaml"],
-    }
-  } else {
-    #include check_run
-    case $::osfamily {
-      'redhat','debian': {
-        #check_run::task { 'task_faraday_gem_install':
-        #  exec_command => '/usr/bin/puppetserver gem install faraday',
-        #  require      => Anchor['slack::begin'],
-        #  before       => File["${slack_puppet_dir}/slack.yaml"],
-        #}
-        package {'faraday':
-          ensure   => present,
-          require  => Anchor['slack::begin'],
-          before   => File["${slack_puppet_dir}/slack.yaml"],
-          provider => $gem_provider,
-        }
-      }
-      default: {
-        fail("Unsupported osfamily ${::osfamily}")
-      }
     }
   }
 
