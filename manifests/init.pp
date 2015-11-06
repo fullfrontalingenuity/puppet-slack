@@ -10,18 +10,18 @@ class slack (
   $gem_provider         = $slack::params::gem_provider,
 ) inherits slack::params {
 
-  debug("slack_webhook: $slack_webhook")
-  debug("is_puppetmaster: $is_puppetmaster")
-  debug("slack_channel: $slack_channel")
-  debug("slack_botname: $slack_botname")
-  debug("gem_provider: $gem_provider")
+  notify {"slack_webhook:   ${slack_webhook}":}
+  notify {"is_puppetmaster: ${is_puppetmaster}":}
+  notify {"slack_channel:   ${slack_channel}":}
+  notify {"slack_botname:   ${slack_botname}":}
+  notify {"gem_provider:    ${gem_provider}":}
 
   anchor {'slack::begin':}
 
   if $is_puppetmaster == true {
     package { 'faraday':
       ensure   => installed,
-      provider => gem,
+      provider => "${gem_provider}",
       require  => Anchor['slack::begin'],
       before   => File["${slack_puppet_dir}/slack.yaml"],
     }

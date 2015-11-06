@@ -8,11 +8,8 @@ class slack::params {
   $slack_puppet_dir     = $::settings::confdir
   $is_puppetmaster      = undef
 
-  if $::pe_server_version {
+  if str2bool($::is_pe) {
     $gem_provider = 'puppetserver_gem'
-  }
-  elsif str2bool($::is_pe) {
-    $gem_provider = 'pe_puppetserver_gem'
   }
   else {
     $gem_provider = 'gem'
