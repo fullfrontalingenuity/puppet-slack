@@ -9,7 +9,8 @@ class slack::params {
   $is_puppetmaster      = undef
 
   if str2bool($::is_pe) {
-    $gem_provider = 'puppetserver_gem'
+    #$gem_provider = 'puppetserver_gem'
+    $gem_provider = 'pe_gem'
   }
   else {
     $gem_provider = 'gem'
